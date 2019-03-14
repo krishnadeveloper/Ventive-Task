@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['prefix'=>'phone','namespace'=>'Phone'], function(){
+
+    Route::get('/', 'PhoneController@phoneList');
+    Route::post('/add', 'PhoneController@store');
+    Route::post('/update/{id}', 'PhoneController@update')
+            ->where(['id'=>'["0-9"]+']);
+
+});
+
+
