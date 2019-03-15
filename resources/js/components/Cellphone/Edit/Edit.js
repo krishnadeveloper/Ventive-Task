@@ -44,7 +44,7 @@ class Edit extends Component {
 
             },
             status: {
-                value: "1",
+                value: '',
                 valid: true,
 
             },
@@ -292,9 +292,9 @@ class Edit extends Component {
                         </div>
                         <div className="form-group col-md-4 col-sm-12">
                             <label htmlFor="exampleInputEmail1">Status</label>
-                            <select className="form-control" onChange={this.handleInput}>
-                                <option selected={this.state.status===1?true:false} defaultValue={1}>Active</option>
-                                <option selected={this.state.status===0?true:false}defaultValue={0}>Inactive</option>
+                            <select className="form-control" value={this.state.status} onChange={this.handleInput}>
+                                <option value={1}>Active</option>
+                                <option value={0}>Inactive</option>
                             </select>
                         </div>
                     </div>

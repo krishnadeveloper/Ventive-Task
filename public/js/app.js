@@ -67200,7 +67200,7 @@ function (_Component) {
         valid: true
       },
       status: {
-        value: "1",
+        value: '',
         valid: true
       },
       id: props.match.params.id,
@@ -67444,13 +67444,12 @@ function (_Component) {
         htmlFor: "exampleInputEmail1"
       }, "Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
+        value: this.state.status,
         onChange: this.handleInput
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: this.state.status === 1 ? true : false,
-        defaultValue: 1
+        value: 1
       }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: this.state.status === 0 ? true : false,
-        defaultValue: 0
+        value: 0
       }, "Inactive")))), this.state.updated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
