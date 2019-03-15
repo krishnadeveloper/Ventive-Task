@@ -20,8 +20,12 @@ Route::group(['prefix'=>'phone','namespace'=>'Phone'], function(){
 
     Route::get('/', 'PhoneController@phoneList');
     Route::post('/add', 'PhoneController@store');
+    Route::get('/edit/{id}', 'PhoneController@edit')
+            ->where('id', '[0-9]+');
+
     Route::post('/update/{id}', 'PhoneController@update')
-            ->where(['id'=>'["0-9"]+']);
+            ->where('id', '[0-9]+');
+
 
 });
 

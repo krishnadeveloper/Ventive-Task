@@ -19,9 +19,32 @@ class PhoneController extends Controller
         return view('reactjs.app');
     }
 
-    public function phoneList()
+
+    public function phoneList(Request $request)
     {
-        return Cellphone::paginate('2');
+
+        // Search params
+        $brandname = trim($request->input('brandname')); // Brandname
+        $model = trim($request->input('modal')); // Model;
+        $platform = trim($request->input('platform')); // Platform
+
+
+        return Cellphone::when($brandname,function($query) use($brandname) {
+
+                               $query->where('brandname','LIKE', '%'.$brandname.'%');
+
+                            })
+                            ->when($model,function($query) use($model) {
+
+                                $query->where('modal','LIKE', '%'.$model.'%');
+ 
+                             })
+                             ->when($platform,function($query) use($platform) {
+
+                                $query->where('platform','LIKE', '%'.$platform.'%');
+ 
+                             })
+                            ->paginate('5');
     }
 
     /**
@@ -42,18 +65,7 @@ class PhoneController extends Controller
      */
     public function store(Request $request)
     {
-        // $validation = $request->validate($request->all(), [
-
-        //     'brandname' =>  'required',
-        //     'modal'     =>  'required',
-        //     'platform'  =>  'required',
-        //     'cpu'       =>  'required',
-        //     'simtype'   =>  'required',
-        //     'usb'       =>  'required',
-        //     'price'     =>  'required',
-        //     'status'    =>  'nullable'
-
-        // ]);
+    
         $validation = Validator::make($request->all(), [
             'brandname' =>  'required',
             'modal'     =>  'required',
@@ -110,7 +122,7 @@ class PhoneController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Cellphone::find($id);
     }
 
     /**
@@ -122,7 +134,41 @@ class PhoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'brandname' =>  'required',
+            'modal'     =>  'required',
+            'platform'  =>  'required',
+            'cpu'       =>  'required',
+            'simtype'   =>  'required',
+            'usb'       =>  'required',
+            'price'     =>  'required',
+            'status'    =>  'nullable'
+        ]);
+
+        if($validation->fails())
+        {
+            return $validation->errors();
+        }
+        else
+        {
+            $updatePhone =  Cellphone::find($id);
+            $updatePhone->brandname     = $request->brandname;
+            $updatePhone->modal         = $request->modal;
+            $updatePhone->platform      = $request->platform;
+            $updatePhone->cpu           = $request->cpu;
+            $updatePhone->simtype       = $request->simtype;
+            $updatePhone->usb           = $request->usb;
+            $updatePhone->price         = $request->price;
+            $updatePhone->status        = $request->status;
+            $updatedStatus= $updatePhone->update();
+
+
+            return response()
+                    ->json([
+                        'status'=>$updatedStatus,
+                        'code'=>200
+                    ]);
+        }
     }
 
     /**

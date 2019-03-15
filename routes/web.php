@@ -17,15 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+    return redirect(route('cellphone'));
+})->name('home');
 Route::get('/reactsetup', 'Setup\Reactsetup@index')->name('reactsetup');
 
+// Cellphone routing
 Route::group(['prefix'=>'phone','namespace'=>'Phone'], function(){
-    
     Route::get('/', 'PhoneController@index')->name('cellphone');
-    Route::get('/list', 'PhoneController@phoneList')->name('phoneList');
-    //Route::get('/list', 'CellphoneController@ShowAll')->name('ShowAll');
-    
-    //Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
+    Route::get('/add', 'PhoneController@index')->name('cellphoneadd');
+    Route::get('/edit/{id}', 'PhoneController@index')->name('cellphoneedit');
 });
 

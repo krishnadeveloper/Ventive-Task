@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import Validation from "../../../Classes/Validation";
 import AddModel from "./AddModel";
 
@@ -48,7 +49,8 @@ class Add extends Component {
 
             },
             validation:false,
-            submit:false
+            submit:false,
+            added:false,
         }
 
         this.handleInput    = this.handleInput.bind(this);
@@ -58,13 +60,13 @@ class Add extends Component {
 
     handleInput(e){
         let eleNamwe = e.target.name;
-	    let eleVal = e.target.value;
+        let eleVal = e.target.value;
+        //console.log(e.target);
 		this.setState(prevState=>{
 			return{
 				[eleNamwe]:{
 					value:eleVal,
 					valid:Validation.isNotEmpty(eleVal),
-					error:prevState[eleNamwe].error
 				},
 				validation:this.checkValid(),
 			}
@@ -109,25 +111,27 @@ class Add extends Component {
             })
 
             AddModel.add(formdata).then(res=>{
-                if(res.data.data.status && res.data.data.code===200){
-                    
-                    this.setState(prev=>{
+                
+                if(res.data.status && res.data.code===200){
+                    this.setState(prevState=>{
                         return{
                             validation:false,
-                            submit:false
+                            submit:false,
+                            added:true
                         }
                     })
-                    document.getElementById('addform')[0].reset();
+                    
                 }
+
             }).catch(err=>{
                 this.setState(prev=>{
                         return{
-                            submit:false
+                            submit:false,
+                            added:false
                         }
                     })
             })
         }
-
     }
     
     render() {
@@ -136,11 +140,11 @@ class Add extends Component {
                 <div className="row">
                     <h2>Add Phone</h2>
                 </div>
-                <form action="" method="post" id="addform" onSubmit={this.handleSubmit}>
+                <form id="addphoneform" onSubmit={this.handleSubmit}>
                     
                     <div className="row">
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputEmail1">Brand Name</label>
+                        <label htmlFor="brandname">Brand Name</label>
                         <input 
                             name="brandname"
                             className="form-control"
@@ -150,7 +154,7 @@ class Add extends Component {
                         <small className="form-text text-red">{!this.state.brandname.valid?this.showError('brandname'):''}</small>    
                     </div>
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputPassword1">Modal</label>
+                        <label htmlFor="modal">Modal</label>
                         <input 
                             name="modal"
                             className="form-control"
@@ -160,7 +164,7 @@ class Add extends Component {
                         <small className="form-text text-red">{!this.state.modal.valid?this.showError('model'):''}</small>
                     </div>
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputEmail1">Platform</label>
+                        <label htmlFor="platform">Platform</label>
                         <input 
                             name="platform"
                             className="form-control"
@@ -173,7 +177,7 @@ class Add extends Component {
                     <div className="row">
 
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputPassword1">CPU</label>
+                        <label htmlFor="cpu">CPU</label>
                         <input 
                             name="cpu"
                             className="form-control"
@@ -183,7 +187,7 @@ class Add extends Component {
                         <small className="form-text text-red">{!this.state.cpu.valid?this.showError('CPU'):''}</small>
                     </div>
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputEmail1">Sim Type</label>
+                        <label htmlFor="simtype">Sim Type</label>
                         <input 
                             name="simtype"
                             className="form-control"
@@ -193,7 +197,7 @@ class Add extends Component {
                         <small className="form-text text-red">{!this.state.brandname.valid?this.showError('Sim Type'):''}</small>  
                     </div>
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputPassword1">Price</label>
+                        <label htmlFor="price">Price</label>
                         <input 
                             name="price"
                             className="form-control"
@@ -207,7 +211,7 @@ class Add extends Component {
                     </div>
                     <div className="row">
                     <div className="form-group col-md-4 col-sm-12">
-                        <label htmlFor="exampleInputEmail1">USB</label>
+                        <label htmlFor="usb">USB</label>
                         <input 
                             name="usb"
                             className="form-control"
@@ -224,8 +228,19 @@ class Add extends Component {
                         </select> 
                     </div>
                     </div>
+                    {
+                        this.state.added?
+                            <div className="row">
+                                <div className="alert alert-success" role="alert">
+                                    Phone added successfully. <Link to="/phone" className="btn btn-success">Go to phone list</Link>
+                                </div>
+                            </div>
+                        :
+                        <button type={this.state.submit?'button':'submit'} disabled={this.state.submit} className="btn btn-primary">Submit</button>
+                    }
+                    
 
-                    <button type={this.state.submit?'button':'submit'} disabled={this.state.submit} className="btn btn-primary">Submit</button>
+                    
                 </form>
             </div>
         );

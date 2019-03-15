@@ -1,17 +1,19 @@
 import axios from "axios";
 import Api from "../../../Classes/api";
 
-class AddModel extends Api{
+class EditModel extends Api{
     constructor(){
         super()
         this.phone = {
             endpoint:{
-                add:`${this.laravelApiUrl()}phone/add`,
+                edit:`${this.laravelApiUrl()}phone/edit`,
+                update:`${this.laravelApiUrl()}phone/update`,
             }
         } 
     }
 
-    add(formdata){
+    update(id, formdata){
+
         let FieldsData = new FormData();
         Object.keys(formdata).map(formInput=>{
             FieldsData.append(formInput, formdata[formInput]);
@@ -19,13 +21,17 @@ class AddModel extends Api{
 
         let request = {
             'method':'POST',
-            url:this.phone.endpoint.add,
+            url:this.phone.endpoint.update+`/${id}`,
             data:FieldsData
         }
         return axios(request);
 
     }
 
+    edit(id){
+        return axios.get(this.phone.endpoint.edit+`/${id}`);
+    }
+
 }
 
-export default new AddModel();
+export default new EditModel();

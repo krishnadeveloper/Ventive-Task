@@ -65821,6 +65821,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Cellphone_Cellphonelist__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Cellphone/Cellphonelist */ "./resources/js/components/Cellphone/Cellphonelist/index.js");
 /* harmony import */ var _components_Cellphone_Add__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Cellphone/Add */ "./resources/js/components/Cellphone/Add/index.js");
 /* harmony import */ var _components_NoMatch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/NoMatch */ "./resources/js/components/NoMatch/index.js");
+/* harmony import */ var _components_Cellphone_Edit__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Cellphone/Edit */ "./resources/js/components/Cellphone/Edit/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65852,6 +65853,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var AppRouter =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65874,6 +65876,9 @@ function (_React$Component) {
         path: "/phone/add",
         component: _components_Cellphone_Add__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/phone/edit/:id?",
+        component: _components_Cellphone_Edit__WEBPACK_IMPORTED_MODULE_9__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         component: _components_NoMatch__WEBPACK_IMPORTED_MODULE_8__["default"]
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Layout_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
@@ -65887,6 +65892,44 @@ function (_React$Component) {
 if (document.getElementById('react-app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppRouter, null), document.getElementById('react-app'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/Classes/Url.js":
+/*!*************************************!*\
+  !*** ./resources/js/Classes/Url.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Url =
+/*#__PURE__*/
+function () {
+  function Url() {
+    _classCallCheck(this, Url);
+  }
+
+  _createClass(Url, [{
+    key: "httpBuildQuery",
+    value: function httpBuildQuery(object) {
+      return Object.keys(object).map(function (key) {
+        return key + '=' + object[key];
+      }).join('&');
+    }
+  }]);
+
+  return Url;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new Url());
 
 /***/ }),
 
@@ -66051,7 +66094,13 @@ function (_React$Component) {
   _createClass(Footer, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Footer");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+        className: "page-footer font-small gray"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-copyright text-center py-3"
+      }, "Demo By : Krishna Kumar", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "mailto:getkrishnakumar1990@gmail.com"
+      }, " Email : getkrishnakumar1990@gmail.com")));
     }
   }]);
 
@@ -66276,8 +66325,9 @@ if (token) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Classes_Validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Classes/Validation */ "./resources/js/Classes/Validation.js");
-/* harmony import */ var _AddModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddModel */ "./resources/js/components/Cellphone/Add/AddModel.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _Classes_Validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Classes/Validation */ "./resources/js/Classes/Validation.js");
+/* harmony import */ var _AddModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddModel */ "./resources/js/components/Cellphone/Add/AddModel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -66297,6 +66347,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66347,7 +66398,8 @@ function (_Component) {
         valid: true
       },
       validation: false,
-      submit: false
+      submit: false,
+      added: false
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -66361,14 +66413,14 @@ function (_Component) {
       var _this2 = this;
 
       var eleNamwe = e.target.name;
-      var eleVal = e.target.value;
+      var eleVal = e.target.value; //console.log(e.target);
+
       this.setState(function (prevState) {
         var _ref;
 
         return _ref = {}, _defineProperty(_ref, eleNamwe, {
           value: eleVal,
-          valid: _Classes_Validation__WEBPACK_IMPORTED_MODULE_1__["default"].isNotEmpty(eleVal),
-          error: prevState[eleNamwe].error
+          valid: _Classes_Validation__WEBPACK_IMPORTED_MODULE_2__["default"].isNotEmpty(eleVal)
         }), _defineProperty(_ref, "validation", _this2.checkValid()), _ref;
       });
     }
@@ -66405,21 +66457,21 @@ function (_Component) {
             submit: true
           };
         });
-        _AddModel__WEBPACK_IMPORTED_MODULE_2__["default"].add(formdata).then(function (res) {
-          if (res.data.data.status && res.data.data.code === 200) {
-            _this3.setState(function (prev) {
+        _AddModel__WEBPACK_IMPORTED_MODULE_3__["default"].add(formdata).then(function (res) {
+          if (res.data.status && res.data.code === 200) {
+            _this3.setState(function (prevState) {
               return {
                 validation: false,
-                submit: false
+                submit: false,
+                added: true
               };
             });
-
-            document.getElementById('addform')[0].reset();
           }
         }).catch(function (err) {
           _this3.setState(function (prev) {
             return {
-              submit: false
+              submit: false,
+              added: false
             };
           });
         });
@@ -66433,16 +66485,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Add Phone")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        action: "",
-        method: "post",
-        id: "addform",
+        id: "addphoneform",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputEmail1"
+        htmlFor: "brandname"
       }, "Brand Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "brandname",
         className: "form-control",
@@ -66453,7 +66503,7 @@ function (_Component) {
       }, !this.state.brandname.valid ? this.showError('brandname') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputPassword1"
+        htmlFor: "modal"
       }, "Modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "modal",
         className: "form-control",
@@ -66464,7 +66514,7 @@ function (_Component) {
       }, !this.state.modal.valid ? this.showError('model') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputEmail1"
+        htmlFor: "platform"
       }, "Platform"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "platform",
         className: "form-control",
@@ -66477,7 +66527,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputPassword1"
+        htmlFor: "cpu"
       }, "CPU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "cpu",
         className: "form-control",
@@ -66488,7 +66538,7 @@ function (_Component) {
       }, !this.state.cpu.valid ? this.showError('CPU') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputEmail1"
+        htmlFor: "simtype"
       }, "Sim Type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "simtype",
         className: "form-control",
@@ -66499,7 +66549,7 @@ function (_Component) {
       }, !this.state.brandname.valid ? this.showError('Sim Type') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputPassword1"
+        htmlFor: "price"
       }, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "price",
         className: "form-control",
@@ -66514,7 +66564,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-4 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "exampleInputEmail1"
+        htmlFor: "usb"
       }, "USB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "usb",
         className: "form-control",
@@ -66533,7 +66583,15 @@ function (_Component) {
         value: 1
       }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: 0
-      }, "Inactive")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Inactive")))), this.state.added ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alert alert-success",
+        role: "alert"
+      }, "Phone added successfully. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/phone",
+        className: "btn btn-success"
+      }, "Go to phone list"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: this.state.submit ? 'button' : 'submit',
         disabled: this.state.submit,
         className: "btn btn-primary"
@@ -66653,6 +66711,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListModel */ "./resources/js/components/Cellphone/Cellphonelist/ListModel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -66672,6 +66742,13 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var typingTimer = null;
+var typingInterval = 1000;
+var styles = {
+  marginLeft: {
+    marginLeft: 20
+  }
+};
 
 var Cellphonelist =
 /*#__PURE__*/
@@ -66692,9 +66769,16 @@ function (_Component) {
         next: 0,
         last: 0
       },
+      search: {
+        brandname: '',
+        model: '',
+        technology: ''
+      },
       loading: true
     };
     _this.handlePagination = _this.handlePagination.bind(_assertThisInitialized(_this));
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
+    _this.handleResetSearch = _this.handleResetSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -66723,10 +66807,15 @@ function (_Component) {
     value: function handlePagination(page) {
       var _this3 = this;
 
-      _ListModel__WEBPACK_IMPORTED_MODULE_2__["default"].page(page).then(function (res) {
+      //combine search params with pagination
+      var paginationParams = _objectSpread({}, this.state.search, {
+        page: page
+      });
+
+      _ListModel__WEBPACK_IMPORTED_MODULE_2__["default"].search(paginationParams).then(function (res) {
         _this3.setState(function (prevState) {
           return {
-            phoneList: prevState.phoneList.length > 0 ? [prevState.phoneList, res.data.data] : res.data.data,
+            phoneList: prevState.phoneList.length > 0 ? [].concat(_toConsumableArray(prevState.phoneList), _toConsumableArray(res.data.data)) : res.data.data,
             page: {
               current: res.data.current_page,
               total: res.data.total,
@@ -66739,12 +66828,141 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleSearch",
+    value: function handleSearch(e) {
+      var _this4 = this;
+
+      var eleName = e.target.name;
+      var eleValue = e.target.value;
+      this.setState(function (prevState) {
+        return {
+          phoneList: [],
+          page: {
+            current: 1,
+            total: 0,
+            next: 0,
+            last: 0
+          },
+          search: _objectSpread({}, prevState.search, _defineProperty({}, eleName, eleValue)),
+          loading: true
+        };
+      }); //Prevent Instant Search on every key press
+
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(function () {
+        _ListModel__WEBPACK_IMPORTED_MODULE_2__["default"].search(_this4.state.search).then(function (res) {
+          _this4.setState(function (prevState) {
+            return {
+              phoneList: res.data.data,
+              page: {
+                current: res.data.current_page,
+                total: res.data.total,
+                next: res.data.current_page + 1,
+                last: res.data.last_page
+              },
+              loading: false
+            };
+          });
+        }).catch(function (err) {
+          console.log(err);
+        });
+      }, typingInterval);
+    }
+  }, {
+    key: "handleResetSearch",
+    value: function handleResetSearch() {
+      var _this5 = this;
+
+      this.setState(function (prevState) {
+        return {
+          phoneList: [],
+          page: {
+            current: 1,
+            total: 0,
+            next: 0,
+            last: 0
+          },
+          search: {
+            brandname: '',
+            model: '',
+            technology: ''
+          },
+          loading: true
+        };
+      });
+      _ListModel__WEBPACK_IMPORTED_MODULE_2__["default"].find().then(function (res) {
+        _this5.setState(function (prevState) {
+          return {
+            phoneList: res.data.data,
+            page: {
+              current: res.data.current_page,
+              total: res.data.total,
+              next: res.data.current_page + 1,
+              last: res.data.last_page
+            },
+            loading: false
+          };
+        });
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "All Phone"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+      var _this6 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 cols-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "All Phone")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 col-sm-12"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: " p-1 mb-1 bg-white rounded row col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 cols-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Enter brandname to search",
+        name: "brandname",
+        onKeyUp: function onKeyUp(e) {
+          _this6.handleSearch(e);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 cols-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Enter model to search",
+        name: "modal",
+        onKeyUp: function onKeyUp(e) {
+          _this6.handleSearch(e);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Enter technology to search",
+        name: "Platform",
+        onKeyUp: function onKeyUp(e) {
+          _this6.handleSearch(e);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 cols-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "mr-50 btn btn-warning"
+      }, "Reset Search "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: "/phone/add",
-        className: "btn btn-success"
-      }, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "ml-20 btn btn-success",
+        style: styles.marginLeft
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-add"
+      }), "Add phone "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
@@ -66752,15 +66970,33 @@ function (_Component) {
         scope: "col"
       }, "Model"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.phoneList.map(function (phone, index) {
+      }, "Platform"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Option"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.phoneList.map(function (phone, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: index
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.brandname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.modal), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.price));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.brandname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.modal), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.platform), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, phone.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+          className: "btn btn-primary",
+          to: "/phone/edit/".concat(phone.id)
+        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-danger ml-1"
+        }, "Delete")));
       }), this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        colSpan: 3
+        colSpan: 5
       }, "Loading...")) : this.state.phoneList.length === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        colSpan: 3
-      }, "No data found")) : '')));
+        colSpan: 5
+      }, "No data found")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        colSpan: 5
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-center"
+      }, this.state.page.next <= this.state.page.last ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success",
+        onClick: function onClick() {
+          _this6.handlePagination(_this6.state.page.next);
+        }
+      }, "Load more") : ''));
     }
   }]);
 
@@ -66783,6 +67019,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Classes_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Classes/api */ "./resources/js/Classes/api.js");
+/* harmony import */ var _Classes_Url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Classes/Url */ "./resources/js/Classes/Url.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66800,6 +67037,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66835,6 +67073,11 @@ function (_Api) {
 
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.phone.endpoint.list + "?page=".concat(_page));
     }
+  }, {
+    key: "search",
+    value: function search(searchParams) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.phone.endpoint.list + "?".concat(_Classes_Url__WEBPACK_IMPORTED_MODULE_2__["default"].httpBuildQuery(searchParams)));
+    }
   }]);
 
   return PhoneListModel;
@@ -66859,6 +67102,456 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Cellphone/Edit/Edit.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/Cellphone/Edit/Edit.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _Classes_Validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Classes/Validation */ "./resources/js/Classes/Validation.js");
+/* harmony import */ var _EditModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditModel */ "./resources/js/components/Cellphone/Edit/EditModel.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Edit =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Edit, _Component);
+
+  function Edit(props) {
+    var _this;
+
+    _classCallCheck(this, Edit);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Edit).call(this, props));
+    _this.state = {
+      brandname: {
+        value: '',
+        valid: true
+      },
+      modal: {
+        value: '',
+        valid: true
+      },
+      platform: {
+        value: '',
+        valid: true
+      },
+      cpu: {
+        value: '',
+        valid: true
+      },
+      simtype: {
+        value: '',
+        valid: true
+      },
+      price: {
+        value: '',
+        valid: true
+      },
+      usb: {
+        value: '',
+        valid: true
+      },
+      status: {
+        value: "1",
+        valid: true
+      },
+      id: props.match.params.id,
+      validation: true,
+      submit: false,
+      updated: false
+    };
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.checkValid = _this.checkValid.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Edit, [{
+    key: "handleInput",
+    value: function handleInput(e) {
+      var _this2 = this;
+
+      var eleNamwe = e.target.name;
+      var eleVal = e.target.value;
+      this.setState(function (prevState) {
+        var _ref;
+
+        return _ref = {}, _defineProperty(_ref, eleNamwe, {
+          value: eleVal,
+          valid: _Classes_Validation__WEBPACK_IMPORTED_MODULE_2__["default"].isNotEmpty(eleVal)
+        }), _defineProperty(_ref, "validation", _this2.checkValid()), _ref;
+      });
+    }
+  }, {
+    key: "checkValid",
+    value: function checkValid() {
+      return this.state.brandname.valid && this.state.modal.valid && this.state.platform.valid && this.state.cpu.valid && this.state.simtype.valid && this.state.price.valid && this.state.usb.valid && this.state.status ? true : false;
+    }
+  }, {
+    key: "showError",
+    value: function showError(elename) {
+      return "Please enter valid ".concat(elename);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+
+      if (this.checkValid() && this.state.validation) {
+        var formdata = {
+          brandname: this.state.brandname.value.toString(),
+          modal: this.state.modal.value.toString(),
+          platform: this.state.platform.value.toString(),
+          cpu: this.state.cpu.value.toString(),
+          simtype: this.state.simtype.value.toString(),
+          price: this.state.price.value.toString(),
+          usb: this.state.usb.value.toString(),
+          status: this.state.status.value.toString()
+        };
+        this.setState(function (prevState) {
+          return {
+            submit: true
+          };
+        });
+        _EditModel__WEBPACK_IMPORTED_MODULE_3__["default"].update(this.state.id, formdata).then(function (res) {
+          if (res.data.status && res.data.code === 200) {
+            _this3.setState(function (prevState) {
+              return {
+                validation: false,
+                submit: false,
+                updated: true
+              };
+            });
+          }
+        }).catch(function (err) {
+          _this3.setState(function (prev) {
+            return {
+              submit: false,
+              update: false
+            };
+          });
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this4 = this;
+
+      _EditModel__WEBPACK_IMPORTED_MODULE_3__["default"].edit(this.state.id).then(function (res) {
+        // Object.keys(res.data).map((column)=>{
+        //     return{
+        //         ...prevState,
+        //         [column]:{
+        //             value:PhoneDetails[column],
+        //             valid:true
+        //         }
+        //     }
+        // })
+        _this4.setState(function (prevState) {
+          return {
+            brandname: {
+              value: res.data.brandname,
+              valid: true
+            },
+            modal: {
+              value: res.data.modal,
+              valid: true
+            },
+            platform: {
+              value: res.data.platform,
+              valid: true
+            },
+            cpu: {
+              value: res.data.cpu,
+              valid: true
+            },
+            simtype: {
+              value: res.data.simtype,
+              valid: true
+            },
+            price: {
+              value: res.data.price,
+              valid: true
+            },
+            usb: {
+              value: res.data.usb,
+              valid: true
+            },
+            status: {
+              value: res.data.status,
+              valid: true
+            }
+          };
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Add Phone")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "editphoneform",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "brandname"
+      }, "Brand Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "brandname",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.brandname.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.brandname.valid ? this.showError('brandname') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "modal"
+      }, "Modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "modal",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.modal.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.modal.valid ? this.showError('model') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "platform"
+      }, "Platform"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "platform",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.platform.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.platform.valid ? this.showError('Platform') : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "cpu"
+      }, "CPU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "cpu",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.cpu.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.cpu.valid ? this.showError('CPU') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "simtype"
+      }, "Sim Type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "simtype",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.brandname.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.brandname.valid ? this.showError('Sim Type') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "price"
+      }, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        name: "price",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state,
+        type: "number",
+        step: 0.1
+      }, "defaultValue", this.state.price.value)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.price.valid ? this.showError('price') : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "usb"
+      }, "USB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "usb",
+        className: "form-control",
+        placeholder: "",
+        onKeyUp: this.handleInput,
+        defaultValue: this.state.usb.value
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "form-text text-red"
+      }, !this.state.usb.valid ? this.showError('usb') : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-4 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "exampleInputEmail1"
+      }, "Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        onChange: this.handleInput
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: this.state.status === 1 ? true : false,
+        defaultValue: 1
+      }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: this.state.status === 0 ? true : false,
+        defaultValue: 0
+      }, "Inactive")))), this.state.updated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alert alert-success",
+        role: "alert"
+      }, "Phone updated successfully. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/phone",
+        className: "btn btn-success"
+      }, "Go to phone list"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: this.state.submit ? 'button' : 'submit',
+        disabled: this.state.submit,
+        className: "btn btn-primary"
+      }, "Update")));
+    }
+  }]);
+
+  return Edit;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+
+/***/ }),
+
+/***/ "./resources/js/components/Cellphone/Edit/EditModel.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Cellphone/Edit/EditModel.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Classes_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Classes/api */ "./resources/js/Classes/api.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var EditModel =
+/*#__PURE__*/
+function (_Api) {
+  _inherits(EditModel, _Api);
+
+  function EditModel() {
+    var _this;
+
+    _classCallCheck(this, EditModel);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EditModel).call(this));
+    _this.phone = {
+      endpoint: {
+        edit: "".concat(_this.laravelApiUrl(), "phone/edit"),
+        update: "".concat(_this.laravelApiUrl(), "phone/update")
+      }
+    };
+    return _this;
+  }
+
+  _createClass(EditModel, [{
+    key: "update",
+    value: function update(id, formdata) {
+      var FieldsData = new FormData();
+      Object.keys(formdata).map(function (formInput) {
+        FieldsData.append(formInput, formdata[formInput]);
+      });
+      var request = {
+        'method': 'POST',
+        url: this.phone.endpoint.update + "/".concat(id),
+        data: FieldsData
+      };
+      return axios__WEBPACK_IMPORTED_MODULE_0___default()(request);
+    }
+  }, {
+    key: "edit",
+    value: function edit(id) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.phone.endpoint.edit + "/".concat(id));
+    }
+  }]);
+
+  return EditModel;
+}(_Classes_api__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (new EditModel());
+
+/***/ }),
+
+/***/ "./resources/js/components/Cellphone/Edit/index.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Cellphone/Edit/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit */ "./resources/js/components/Cellphone/Edit/Edit.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (_Edit__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/components/NoMatch/NoMatch.js":
 /*!****************************************************!*\
   !*** ./resources/js/components/NoMatch/NoMatch.js ***!
@@ -66874,13 +67567,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var NoMatch = function NoMatch() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    class: "card",
-    style: "width: 18rem;"
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    class: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     class: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     class: "card-text"
-  }, "Nothing found...")));
+  }, "Nothing found..."))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NoMatch);

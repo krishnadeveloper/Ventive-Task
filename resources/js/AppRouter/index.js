@@ -11,6 +11,7 @@ import Setup from "../components/Setup";
 import Cellphonelist from "../components/Cellphone/Cellphonelist";
 import CellphoneAdd  from "../components/Cellphone/Add";
 import NoMatch from "../components/NoMatch";
+import Edit from "../components/Cellphone/Edit";
 
 class AppRouter extends React.Component {
     render() {
@@ -30,6 +31,11 @@ class AppRouter extends React.Component {
                         <Route
                             path="/phone/add"
                             component={CellphoneAdd}
+                        />
+
+                        <Route
+                            path="/phone/edit/:id?"
+                            component={Edit}
                         />
 
                         <Route 
