@@ -24,8 +24,8 @@ class Cellphonelist extends Component {
             },
             search:{
                 brandname:'',
-                model:'',
-                technology:''
+                modal:'',
+                platform:''
             },
             loading: true,
         }
@@ -138,8 +138,8 @@ class Cellphonelist extends Component {
                 },
                 search:{
                     brandname:'',
-                    model:'',
-                    technology:''
+                    modal:'',
+                    platform:''
                 },
                 loading:true
             }
@@ -193,9 +193,9 @@ class Cellphonelist extends Component {
                 <div className=" p-1 mb-1 bg-white rounded row col-md-12">
                     <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.brandname} placeholder="Enter brandname to search" name="brandname" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
                     <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.modal} placeholder="Enter model to search" name="modal" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
-                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.Platform} placeholder="Enter technology to search" name="Platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.platform} placeholder="Enter platform to search" name="platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
                     <div className="col-md-3 cols-sm-12">
-                        <button className="mr-50 btn btn-warning">Reset Search </button> 
+                        <button className="mr-50 btn btn-warning" onClick={this.handleResetSearch}>Reset Search </button> 
                         <NavLink to="/phone/add" className="ml-20 btn btn-success" style={styles.marginLeft}> <i className="fa fa-add"></i>Add phone </NavLink>
                     </div>
                 </div>

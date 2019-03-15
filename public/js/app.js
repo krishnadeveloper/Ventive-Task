@@ -66754,8 +66754,8 @@ function (_Component) {
       },
       search: {
         brandname: '',
-        model: '',
-        technology: ''
+        modal: '',
+        platform: ''
       },
       loading: true
     };
@@ -66867,8 +66867,8 @@ function (_Component) {
           },
           search: {
             brandname: '',
-            model: '',
-            technology: ''
+            modal: '',
+            platform: ''
           },
           loading: true
         };
@@ -66951,16 +66951,17 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
-        defaultValue: this.state.search.Platform,
-        placeholder: "Enter technology to search",
-        name: "Platform",
+        defaultValue: this.state.search.platform,
+        placeholder: "Enter platform to search",
+        name: "platform",
         onKeyUp: function onKeyUp(e) {
           _this7.handleSearch(e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3 cols-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "mr-50 btn btn-warning"
+        className: "mr-50 btn btn-warning",
+        onClick: this.handleResetSearch
       }, "Reset Search "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: "/phone/add",
         className: "ml-20 btn btn-success",
