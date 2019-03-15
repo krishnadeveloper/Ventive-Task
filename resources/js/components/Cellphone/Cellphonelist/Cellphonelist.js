@@ -127,6 +127,10 @@ class Cellphonelist extends Component {
 
     handleResetSearch(){
 
+        document.getElementById('brandname').value = '';
+        document.getElementById('modal').value = '';
+        document.getElementById('platform').value = '';
+
         this.setState(prevState=>{
             return{
                 phoneList:[],
@@ -191,9 +195,9 @@ class Cellphonelist extends Component {
                 </div>
 
                 <div className=" p-1 mb-1 bg-white rounded row col-md-12">
-                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.brandname} placeholder="Enter brandname to search" name="brandname" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
-                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.modal} placeholder="Enter model to search" name="modal" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
-                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.platform} placeholder="Enter platform to search" name="platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" placeholder="Enter brandname to search" id="brandname" name="brandname" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" placeholder="Enter model to search" id="modal" name="modal" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" placeholder="Enter platform to search" id="platform" name="platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
                     <div className="col-md-3 cols-sm-12">
                         <button className="mr-50 btn btn-warning" onClick={this.handleResetSearch}>Reset Search </button> 
                         <NavLink to="/phone/add" className="ml-20 btn btn-success" style={styles.marginLeft}> <i className="fa fa-add"></i>Add phone </NavLink>

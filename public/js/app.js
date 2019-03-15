@@ -66856,6 +66856,9 @@ function (_Component) {
     value: function handleResetSearch() {
       var _this5 = this;
 
+      document.getElementById('brandname').value = '';
+      document.getElementById('modal').value = '';
+      document.getElementById('platform').value = '';
       this.setState(function (prevState) {
         return {
           phoneList: [],
@@ -66929,8 +66932,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
-        defaultValue: this.state.search.brandname,
         placeholder: "Enter brandname to search",
+        id: "brandname",
         name: "brandname",
         onKeyUp: function onKeyUp(e) {
           _this7.handleSearch(e);
@@ -66940,8 +66943,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
-        defaultValue: this.state.search.modal,
         placeholder: "Enter model to search",
+        id: "modal",
         name: "modal",
         onKeyUp: function onKeyUp(e) {
           _this7.handleSearch(e);
@@ -66951,8 +66954,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
-        defaultValue: this.state.search.platform,
         placeholder: "Enter platform to search",
+        id: "platform",
         name: "platform",
         onKeyUp: function onKeyUp(e) {
           _this7.handleSearch(e);
