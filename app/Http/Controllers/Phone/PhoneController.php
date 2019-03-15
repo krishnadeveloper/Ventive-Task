@@ -179,6 +179,13 @@ class PhoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deletePhone =  Cellphone::find($id);
+        $deleted = $deletePhone->update();
+        
+        return response()
+                ->json([
+                    'status'=>$deleted,
+                    'code'=>200
+                ]);
     }
 }

@@ -22,8 +22,9 @@ Route::group(['prefix'=>'phone','namespace'=>'Phone'], function(){
     Route::post('/add', 'PhoneController@store');
     Route::get('/edit/{id}', 'PhoneController@edit')
             ->where('id', '[0-9]+');
-
     Route::post('/update/{id}', 'PhoneController@update')
+            ->where('id', '[0-9]+');
+    Route::delete('/delete/{id}', 'PhoneController@destroy')
             ->where('id', '[0-9]+');
 
 

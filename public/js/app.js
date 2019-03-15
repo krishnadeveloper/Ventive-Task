@@ -66891,9 +66891,28 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete(id) {
+      var _this6 = this;
+
+      var confirmation = confirm('Are you sure?');
+
+      if (confirmation) {
+        _ListModel__WEBPACK_IMPORTED_MODULE_2__["default"].delete(id).then(function (res) {
+          if (res.data.status && res.data.code === 200) {
+            _this6.handleResetSearch();
+          } else {
+            console.log(res.data);
+          }
+        }).catch(function (err) {
+          console.log(err);
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
@@ -66910,30 +66929,33 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
+        defaultValue: this.state.search.brandname,
         placeholder: "Enter brandname to search",
         name: "brandname",
         onKeyUp: function onKeyUp(e) {
-          _this6.handleSearch(e);
+          _this7.handleSearch(e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3 cols-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
+        defaultValue: this.state.search.modal,
         placeholder: "Enter model to search",
         name: "modal",
         onKeyUp: function onKeyUp(e) {
-          _this6.handleSearch(e);
+          _this7.handleSearch(e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control",
         type: "text",
+        defaultValue: this.state.search.Platform,
         placeholder: "Enter technology to search",
         name: "Platform",
         onKeyUp: function onKeyUp(e) {
-          _this6.handleSearch(e);
+          _this7.handleSearch(e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-3 cols-sm-12"
@@ -66964,7 +66986,10 @@ function (_Component) {
           className: "btn btn-primary",
           to: "/phone/edit/".concat(phone.id)
         }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn btn-danger ml-1"
+          className: "btn btn-danger ml-1",
+          onClick: function onClick(e) {
+            _this7.handleDelete(phone.id);
+          }
         }, "Delete")));
       }), this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         colSpan: 5
@@ -66977,7 +67002,7 @@ function (_Component) {
       }, this.state.page.next <= this.state.page.last ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-success",
         onClick: function onClick() {
-          _this6.handlePagination(_this6.state.page.next);
+          _this7.handlePagination(_this7.state.page.next);
         }
       }, "Load more") : ''));
     }
@@ -67038,7 +67063,8 @@ function (_Api) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PhoneListModel).call(this));
     _this.phone = {
       endpoint: {
-        list: "".concat(_this.laravelApiUrl(), "phone")
+        list: "".concat(_this.laravelApiUrl(), "phone"),
+        delete: "".concat(_this.laravelApiUrl(), "phone/delete")
       }
     };
     return _this;
@@ -67060,6 +67086,11 @@ function (_Api) {
     key: "search",
     value: function search(searchParams) {
       return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.phone.endpoint.list + "?".concat(_Classes_Url__WEBPACK_IMPORTED_MODULE_2__["default"].httpBuildQuery(searchParams)));
+    }
+  }, {
+    key: "delete",
+    value: function _delete(id) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete(this.phone.endpoint.delete + "/".concat(id));
     }
   }]);
 

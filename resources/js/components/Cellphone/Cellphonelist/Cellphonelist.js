@@ -163,6 +163,24 @@ class Cellphonelist extends Component {
         })
     }
 
+    handleDelete(id){
+        const confirmation  = confirm('Are you sure?');
+        if(confirmation){
+            PhoneListModel.delete(id).then(res=>{
+                if(res.data.status && res.data.code===200)
+                {
+                    this.handleResetSearch();
+                }
+                else{
+                    console.log(res.data)
+                }
+            }).catch(err=>{
+                console.log(err);
+            })
+
+        }
+    }
+
     render() {
         return (
             <div className="container">
@@ -173,9 +191,9 @@ class Cellphonelist extends Component {
                 </div>
 
                 <div className=" p-1 mb-1 bg-white rounded row col-md-12">
-                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" placeholder="Enter brandname to search" name="brandname" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
-                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" placeholder="Enter model to search" name="modal" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
-                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" placeholder="Enter technology to search" name="Platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.brandname} placeholder="Enter brandname to search" name="brandname" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 cols-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.modal} placeholder="Enter model to search" name="modal" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
+                    <div className="col-md-3 col-sm-12"><input className="form-control" type="text" defaultValue={this.state.search.Platform} placeholder="Enter technology to search" name="Platform" onKeyUp={(e)=>{this.handleSearch(e)}}/></div>
                     <div className="col-md-3 cols-sm-12">
                         <button className="mr-50 btn btn-warning">Reset Search </button> 
                         <NavLink to="/phone/add" className="ml-20 btn btn-success" style={styles.marginLeft}> <i className="fa fa-add"></i>Add phone </NavLink>
@@ -203,7 +221,7 @@ class Cellphonelist extends Component {
                                         <td>{phone.price}</td>
                                         <td>
                                             <NavLink className="btn btn-primary" to={`/phone/edit/${phone.id}`}>Edit</NavLink>
-                                            <button className="btn btn-danger ml-1">Delete</button>
+                                            <button className="btn btn-danger ml-1" onClick={(e)=>{this.handleDelete(phone.id)}}>Delete</button>
                                         </td>
                                     </tr>
                                 )
